@@ -70,6 +70,53 @@ paths:
                       - invoiceLineNumber: string
                         returnStatus: string
                         reasonCode: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    x-stoplight:
+                      id: ms9ks1frwfaf4
+                    items:
+                      x-stoplight:
+                        id: 22wyyjhhyky1o
+                      type: object
+                      minProperties: 2
+                      maxProperties: -1
+                      properties:
+                        code:
+                          type: string
+                          x-stoplight:
+                            id: 2kmm8ckbcqpqn
+                        message:
+                          type: string
+                          x-stoplight:
+                            id: t2xkczydg6ska
+                        status:
+                          type: string
+                          x-stoplight:
+                            id: rt355l2v5h98h
+                        dateTime:
+                          type: string
+                          x-stoplight:
+                            id: hmnv3nbelpbva
+                        trackingId:
+                          type: string
+                          x-stoplight:
+                            id: 2lkbagqjnyxiw
+              examples:
+                400Example:
+                  value:
+                    errors:
+                      - code: Internal Server Error
+                        message: An internal server error occurred. Please contact Eaton support and refer to tracking number
+                        status: 500
+                        dateTime: 'Sun, 20 March 2023 15:07:51 UTC'
+                        trackingId: ''
         '500':
           description: Internal Server Error
           content:
