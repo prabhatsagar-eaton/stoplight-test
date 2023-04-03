@@ -1,0 +1,178 @@
+openapi: 3.0.0
+x-stoplight:
+  id: yt5veuewymbck
+info:
+  title: ATEB ValidatePO
+  version: '1.0'
+  description: 'The purpose of the ATEB Validate Purchase Order API is to validate purchase orders for an external application called ATEB.  Valid purchase orders will exist in Eaton ERP systems, Oracle, and SAP. The request message will include Eaton site and purchase order information from the ATEB application. The approach is to find the PO in the appropriate system, and respond back to ATEB.  '
+servers:
+  - url: 'https ://api-lab.eaton.com/finance/ap/v1'
+    description: LAB
+  - url: 'https ://api-dev.eaton.com/finance/ap/v1'
+    description: DEV
+  - url: 'https ://api-sit.eaton.com/finance/ap/v1'
+    description: SIT
+  - url: 'https ://api-qa.eaton.com/finance/ap/v1'
+    description: QA
+paths:
+  /purchaseorders/validate:
+    post:
+      summary: ValidatePurchaseOrder
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  invoiceNumber:
+                    type: string
+                    minLength: 1
+                  returnStatus:
+                    type: string
+                    minLength: 1
+                  reasonCode:
+                    type: string
+                    minLength: 1
+                  invoiceLine:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - invoiceLineNumber
+                        - returnStatus
+                        - reasonCode
+                      properties:
+                        invoiceLineNumber:
+                          type: string
+                          minLength: 1
+                        returnStatus:
+                          type: string
+                          minLength: 1
+                        reasonCode:
+                          type: string
+                          minLength: 1
+                required:
+                  - invoiceNumber
+                  - returnStatus
+                  - reasonCode
+                  - invoiceLine
+                x-examples:
+                  example-1:
+                    invoiceNumber: string
+                    returnStatus: string
+                    reasonCode: string
+                    invoiceLine:
+                      - invoiceLineNumber: string
+                        returnStatus: string
+                        reasonCode: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                        message:
+                          type: string
+                        status:
+                          type: number
+                        dateTime:
+                          type: string
+                        trackingId:
+                          type: string
+              examples:
+                '500':
+                  value:
+                    errors:
+                      - code: Internal Server Error
+                        message: An internal server error occurred. Please contact Eaton support and refer to tracking number
+                        status: 500
+                        dateTime: 'Sun, 20 March 2023 15:07:51 UTC'
+                        trackingId: ''
+      operationId: post-purchaseorders-validate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  purchaseOrder:
+                    plantCode: string
+                    supplierNumber: string
+                    invoiceNumber: string
+                  purchaseOrderLine:
+                    invoiceLineNumber: string
+                    PONumber: string
+                    POCurrencyCode: string
+                    POLineNumber: string
+                    partNumber: string
+              properties:
+                purchaseOrder:
+                  type: object
+                  required:
+                    - supplierNumber
+                    - invoiceNumber
+                  properties:
+                    plantCode:
+                      type: string
+                      minLength: 1
+                    supplierNumber:
+                      type: string
+                      minLength: 1
+                    invoiceNumber:
+                      type: string
+                      minLength: 1
+                purchaseOrderLine:
+                  type: object
+                  required:
+                    - invoiceLineNumber
+                    - PONumber
+                    - POCurrencyCode
+                    - POLineNumber
+                  properties:
+                    invoiceLineNumber:
+                      type: string
+                      minLength: 1
+                    PONumber:
+                      type: string
+                      minLength: 1
+                    POCurrencyCode:
+                      type: string
+                      minLength: 1
+                    POLineNumber:
+                      type: string
+                      minLength: 1
+                    partNumber:
+                      type: string
+                      minLength: 1
+              required:
+                - purchaseOrder
+                - purchaseOrderLine
+        description: 'These are the parameters sent to the proxy from ATEB '
+      description: ''
+      parameters: []
+components:
+  schemas: {}
+  securitySchemes:
+    API Key - 1:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: 'https://eaton-nonprod-lab.apigee.net/oauth/accesstoken?grant_type=client_credentials'
+          refreshUrl: ''
+          scopes: {}
+      description: ATEB OAuth2.0

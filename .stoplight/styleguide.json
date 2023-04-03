@@ -1,0 +1,141 @@
+{
+  "name": "Stoplight Test",
+  "description": "",
+  "spectralExtends": [],
+  "extends": [
+    "cHJqOjEyMzU4Ng",
+    "cHJqOjEzNDcyMQ",
+    "cHJqOjE2ODE2OA",
+    "cHJqOjE1OTkxMA",
+    "cHJqOjE1ODA4NQ",
+    "cHJqOjEzODQ2NQ",
+    "cHJqOjE2MjQ3OQ",
+    "cHJqOjE0MzcxMw"
+  ],
+  "formats": [
+    "oas2",
+    "oas3",
+    "oas3.0",
+    "oas3.1"
+  ],
+  "aliases": {},
+  "rules": {},
+  "extendedStyleguides": [
+    {
+      "id": "cHJqOjE0MzcxMw",
+      "name": "Enforce HTTPs",
+      "slug": "enforce-https",
+      "workspace": {
+        "slug": "apistylebook",
+        "name": "API Stylebook"
+      },
+      "icon": "lock",
+      "color": "#2b39c1",
+      "description": "Enforce HTTPS on your APIs",
+      "latestRelease": {
+        "release": 10
+      }
+    },
+    {
+      "id": "cHJqOjE2MjQ3OQ",
+      "name": "BRImo",
+      "slug": "br-imo",
+      "workspace": {
+        "slug": "ibbri-com",
+        "name": "ibbri-com"
+      },
+      "icon": "code",
+      "color": "#6D214F"
+    },
+    {
+      "id": "cHJqOjEzODQ2NQ",
+      "name": "JSON:API",
+      "slug": "json-api",
+      "workspace": {
+        "slug": "apistylebook",
+        "name": "API Stylebook"
+      },
+      "icon": "exchange-alt",
+      "color": "#bc48cb",
+      "description": "Guidelines for the JSON:API specification.",
+      "latestRelease": {
+        "release": 6
+      }
+    },
+    {
+      "id": "cHJqOjE1ODA4NQ",
+      "name": "OWASP Top 10",
+      "slug": "owasp-top-10",
+      "workspace": {
+        "slug": "apistylebook",
+        "name": "API Stylebook"
+      },
+      "icon": "key",
+      "color": "#6672e6",
+      "description": "Rules to circumvent critical security risks to APIs",
+      "latestRelease": {
+        "release": 17
+      }
+    },
+    {
+      "id": "cHJqOjE1OTkxMA",
+      "name": "Spell Check",
+      "slug": "spell-check",
+      "workspace": {
+        "slug": "apistylebook",
+        "name": "API Stylebook"
+      },
+      "icon": "server",
+      "color": "#2bc137",
+      "description": "Checks spelling in descriptions",
+      "latestRelease": {
+        "release": 7
+      }
+    },
+    {
+      "id": "cHJqOjE2ODE2OA",
+      "name": "Eaton Style Guide",
+      "slug": "eaton-style-guide",
+      "workspace": {
+        "slug": "eaton",
+        "name": "Eaton APIs"
+      },
+      "icon": "paint-brush",
+      "color": "#EAB543",
+      "latestRelease": {
+        "release": 3
+      }
+    },
+    {
+      "id": "cHJqOjEzNDcyMQ",
+      "name": "URL Style Guidelines",
+      "slug": "url-guidelines",
+      "workspace": {
+        "slug": "apistylebook",
+        "name": "API Stylebook"
+      },
+      "icon": "link",
+      "color": "#b33737",
+      "description": "URL naming and structure",
+      "latestRelease": {
+        "release": 22
+      }
+    },
+    {
+      "id": "cHJqOjEyMzU4Ng",
+      "name": "Stoplight Style Guide",
+      "slug": "stoplight-style-guide",
+      "workspace": {
+        "slug": "apistylebook",
+        "name": "API Stylebook"
+      },
+      "icon": "robot",
+      "color": "#3898ff",
+      "description": "Default rules for Stoplight projects",
+      "latestRelease": {
+        "release": 37
+      }
+    }
+  ],
+  "extendedDefault": true
+}
