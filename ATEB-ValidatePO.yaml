@@ -25,42 +25,7 @@ paths:
           content:
             application/json:
               schema:
-                description: ''
                 type: object
-                properties:
-                  invoiceNumber:
-                    type: string
-                    minLength: 1
-                  returnStatus:
-                    type: string
-                    minLength: 1
-                  reasonCode:
-                    type: string
-                    minLength: 1
-                  invoiceLine:
-                    type: array
-                    uniqueItems: true
-                    minItems: 1
-                    items:
-                      required:
-                        - invoiceLineNumber
-                        - returnStatus
-                        - reasonCode
-                      properties:
-                        invoiceLineNumber:
-                          type: string
-                          minLength: 1
-                        returnStatus:
-                          type: string
-                          minLength: 1
-                        reasonCode:
-                          type: string
-                          minLength: 1
-                required:
-                  - invoiceNumber
-                  - returnStatus
-                  - reasonCode
-                  - invoiceLine
                 x-examples:
                   example-1:
                     invoiceNumber: string
@@ -70,6 +35,48 @@ paths:
                       - invoiceLineNumber: string
                         returnStatus: string
                         reasonCode: string
+                properties:
+                  POResponse:
+                    type: object
+                    x-stoplight:
+                      id: b9h0nremldm28
+                    properties:
+                      PurchaseOrder:
+                        type: object
+                        x-stoplight:
+                          id: zjisnxunvy9lf
+                        properties:
+                          ReturnStatus:
+                            type: string
+                            x-stoplight:
+                              id: 51z17q6rfaxob
+                          ReasonCode:
+                            type: string
+                            x-stoplight:
+                              id: w5shpt51pg6fn
+                          InvoiceLineResponse:
+                            type: object
+                            x-stoplight:
+                              id: vhe0gloa6keg4
+                            properties:
+                              ReturnStatus:
+                                type: string
+                                x-stoplight:
+                                  id: qu9838l5vzpl0
+                              ReasonCode:
+                                type: string
+                                x-stoplight:
+                                  id: n342i4reqz5ko
+                              InvoiceNumber:
+                                type: string
+                                x-stoplight:
+                                  id: 7x9bxr6abq47f
+                              InvoiceLineNumber:
+                                type: string
+                                x-stoplight:
+                                  id: n6pxuvuv1c76l
+                required:
+                  - POResponse
         '400':
           description: Bad Request
           content:
