@@ -153,7 +153,6 @@ paths:
         content:
           application/json:
             schema:
-              description: ''
               type: object
               x-examples:
                 example-1:
@@ -168,32 +167,44 @@ paths:
                     POLineNumber: string
                     partNumber: string
               properties:
-                purchaseOrder:
+                PurchaseOrder:
                   type: object
                   required:
-                    - supplierNumber
-                    - invoiceNumber
+                    - SupplierNumber
+                    - InvoiceNumber
+                  x-stoplight:
+                    id: mipk0mr0mwiwk
                   properties:
-                    plantCode:
+                    PlantCode:
                       type: string
                       minLength: 1
-                    supplierNumber:
+                      x-stoplight:
+                        id: gg1syjeudovq9
+                    SupplierNumber:
                       type: string
                       minLength: 1
-                    invoiceNumber:
+                      x-stoplight:
+                        id: 6lsebpuatd6mn
+                    InvoiceNumber:
                       type: string
                       minLength: 1
-                purchaseOrderLine:
+                      x-stoplight:
+                        id: ynjhd4b079rao
+                PurchaseOrderline:
                   type: object
                   required:
-                    - invoiceLineNumber
+                    - InvoiceLineNumber
                     - PONumber
                     - POCurrencyCode
                     - POLineNumber
+                  x-stoplight:
+                    id: douwsapwig7ry
                   properties:
-                    invoiceLineNumber:
+                    InvoiceLineNumber:
                       type: string
                       minLength: 1
+                      x-stoplight:
+                        id: dveheuh75fv55
                     PONumber:
                       type: string
                       minLength: 1
@@ -203,12 +214,14 @@ paths:
                     POLineNumber:
                       type: string
                       minLength: 1
-                    partNumber:
+                    PartNumber:
                       type: string
                       minLength: 1
+                      x-stoplight:
+                        id: nlqix8o61w546
               required:
-                - purchaseOrder
-                - purchaseOrderLine
+                - PurchaseOrder
+                - PurchaseOrderline
         description: 'These are the parameters sent to the proxy from ATEB '
       description: ''
       parameters: []
