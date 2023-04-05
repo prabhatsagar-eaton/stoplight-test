@@ -25,42 +25,7 @@ paths:
           content:
             application/json:
               schema:
-                description: ''
                 type: object
-                properties:
-                  invoiceNumber:
-                    type: string
-                    minLength: 1
-                  returnStatus:
-                    type: string
-                    minLength: 1
-                  reasonCode:
-                    type: string
-                    minLength: 1
-                  invoiceLine:
-                    type: array
-                    uniqueItems: true
-                    minItems: 1
-                    items:
-                      required:
-                        - invoiceLineNumber
-                        - returnStatus
-                        - reasonCode
-                      properties:
-                        invoiceLineNumber:
-                          type: string
-                          minLength: 1
-                        returnStatus:
-                          type: string
-                          minLength: 1
-                        reasonCode:
-                          type: string
-                          minLength: 1
-                required:
-                  - invoiceNumber
-                  - returnStatus
-                  - reasonCode
-                  - invoiceLine
                 x-examples:
                   example-1:
                     invoiceNumber: string
@@ -70,6 +35,95 @@ paths:
                       - invoiceLineNumber: string
                         returnStatus: string
                         reasonCode: string
+                properties:
+                  POResponse:
+                    type: object
+                    x-stoplight:
+                      id: b9h0nremldm28
+                    properties:
+                      PurchaseOrder:
+                        type: object
+                        x-stoplight:
+                          id: zjisnxunvy9lf
+                        properties:
+                          ReturnStatus:
+                            type: string
+                            x-stoplight:
+                              id: 51z17q6rfaxob
+                          ReasonCode:
+                            type: string
+                            x-stoplight:
+                              id: w5shpt51pg6fn
+                          InvoiceLineResponse:
+                            type: object
+                            x-stoplight:
+                              id: vhe0gloa6keg4
+                            properties:
+                              ReturnStatus:
+                                type: string
+                                x-stoplight:
+                                  id: qu9838l5vzpl0
+                              ReasonCode:
+                                type: string
+                                x-stoplight:
+                                  id: n342i4reqz5ko
+                              InvoiceNumber:
+                                type: string
+                                x-stoplight:
+                                  id: 7x9bxr6abq47f
+                              InvoiceLineNumber:
+                                type: string
+                                x-stoplight:
+                                  id: n6pxuvuv1c76l
+                required:
+                  - POResponse
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    x-stoplight:
+                      id: ms9ks1frwfaf4
+                    items:
+                      x-stoplight:
+                        id: 22wyyjhhyky1o
+                      type: object
+                      minProperties: 2
+                      maxProperties: 100
+                      properties:
+                        code:
+                          type: string
+                          x-stoplight:
+                            id: 2kmm8ckbcqpqn
+                        message:
+                          type: string
+                          x-stoplight:
+                            id: t2xkczydg6ska
+                        status:
+                          type: string
+                          x-stoplight:
+                            id: rt355l2v5h98h
+                        dateTime:
+                          type: string
+                          x-stoplight:
+                            id: hmnv3nbelpbva
+                        trackingId:
+                          type: string
+                          x-stoplight:
+                            id: 2lkbagqjnyxiw
+              examples:
+                400Example:
+                  value:
+                    errors:
+                      - code: Internal Server Error
+                        message: An internal server error occurred. Please contact Eaton support and refer to tracking number
+                        status: 500
+                        dateTime: 'Sun, 20 March 2023 15:07:51 UTC'
+                        trackingId: ''
         '500':
           description: Internal Server Error
           content:
@@ -106,7 +160,6 @@ paths:
         content:
           application/json:
             schema:
-              description: ''
               type: object
               x-examples:
                 example-1:
@@ -121,32 +174,44 @@ paths:
                     POLineNumber: string
                     partNumber: string
               properties:
-                purchaseOrder:
+                PurchaseOrder:
                   type: object
                   required:
-                    - supplierNumber
-                    - invoiceNumber
+                    - SupplierNumber
+                    - InvoiceNumber
+                  x-stoplight:
+                    id: mipk0mr0mwiwk
                   properties:
-                    plantCode:
+                    PlantCode:
                       type: string
                       minLength: 1
-                    supplierNumber:
+                      x-stoplight:
+                        id: gg1syjeudovq9
+                    SupplierNumber:
                       type: string
                       minLength: 1
-                    invoiceNumber:
+                      x-stoplight:
+                        id: 6lsebpuatd6mn
+                    InvoiceNumber:
                       type: string
                       minLength: 1
-                purchaseOrderLine:
+                      x-stoplight:
+                        id: ynjhd4b079rao
+                PurchaseOrderline:
                   type: object
                   required:
-                    - invoiceLineNumber
+                    - InvoiceLineNumber
                     - PONumber
                     - POCurrencyCode
                     - POLineNumber
+                  x-stoplight:
+                    id: douwsapwig7ry
                   properties:
-                    invoiceLineNumber:
+                    InvoiceLineNumber:
                       type: string
                       minLength: 1
+                      x-stoplight:
+                        id: dveheuh75fv55
                     PONumber:
                       type: string
                       minLength: 1
@@ -156,12 +221,14 @@ paths:
                     POLineNumber:
                       type: string
                       minLength: 1
-                    partNumber:
+                    PartNumber:
                       type: string
                       minLength: 1
+                      x-stoplight:
+                        id: nlqix8o61w546
               required:
-                - purchaseOrder
-                - purchaseOrderLine
+                - PurchaseOrder
+                - PurchaseOrderline
         description: 'These are the parameters sent to the proxy from ATEB '
       description: ''
       parameters: []
