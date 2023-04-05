@@ -93,7 +93,7 @@ paths:
                         id: 22wyyjhhyky1o
                       type: object
                       minProperties: 2
-                      maxProperties: -1
+                      maxProperties: 100
                       properties:
                         code:
                           type: string
