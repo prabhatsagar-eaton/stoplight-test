@@ -6,13 +6,13 @@ info:
   version: '1.0'
   description: 'The purpose of the ATEB Validate Purchase Order API is to validate purchase orders for an external application called ATEB.  Valid purchase orders will exist in Eaton ERP systems, Oracle, and SAP. The request message will include Eaton site and purchase order information from the ATEB application. The approach is to find the PO in the appropriate system, and respond back to ATEB.  '
 servers:
-  - url: 'https ://api-lab.eaton.com/finance/ap/v1'
+  - url: 'https://api-lab.eaton.com/finance/ap/v1'
     description: LAB
-  - url: 'https ://api-dev.eaton.com/finance/ap/v1'
+  - url: 'https://api-dev.eaton.com/finance/ap/v1'
     description: DEV
-  - url: 'https ://api-sit.eaton.com/finance/ap/v1'
+  - url: 'https://api-sit.eaton.com/finance/ap/v1'
     description: SIT
-  - url: 'https ://api-qa.eaton.com/finance/ap/v1'
+  - url: 'https://api-qa.eaton.com/finance/ap/v1'
     description: QA
 paths:
   /purchaseorders/validate:
